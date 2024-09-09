@@ -55,11 +55,11 @@ class Read:
         nrows,ncolumns = self.strlist2numlist(lines[0])
         i = 0
         j=0
-        cj = np.zeros(ncolumns)
+        cj = {}
         while i < ncolumns:
             j+=1
             for num in self.strlist2numlist(lines[j]):
-                cj[i] = num
+                cj[i+1] = num
                 i+=1
 
         E = {}
@@ -90,6 +90,7 @@ class Read:
                 print(f'The given string {num} is not a number')
                 return -inf
             
+
 if __name__ == '__main__':
     filename = 'instancias/real_world/rail507.txt'
     read = Read(filename)

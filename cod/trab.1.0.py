@@ -5,7 +5,7 @@ import sys
 print(sys.version)
 import cplex
 
-read = inst.Read('ot_comb/instancias/1987/4/scp49.txt')
+read = inst.Read('instancias/1987/4/scp41.txt')
 
 nrows,ncolumns, cj, E = read.read_inst()
 
@@ -16,7 +16,7 @@ model = cplex.Cplex()
 x = [f'x{i}' for i in range(1,ncolumns+1)]
 lb = [0 for i in range(ncolumns)]
 ub = [1 for i in range(ncolumns)]
-xtypes = ['C' for _ in range(ncolumns)]
+xtypes = ['B' for _ in range(ncolumns)]
 
 A = [[f'a{i}{j}' for j in range(1,ncolumns+1)] for i in range(nrows)]
 alb = [[0 for _ in range(ncolumns)] for _ in range(nrows)]
@@ -29,7 +29,7 @@ for i in range(nrows):
     model.variables.add(names=A[i], lb=alb[i], ub=aub[i], types=Atypes[i])
 
 # Step 5: Set the objective function
-model.objective.set_linear(list(zip(x, cj)))
+model.objective.set_linear([(x[i-1], cj[i]) for i in cj])
 model.objective.set_sense(model.objective.sense.minimize)
 
 # for i in range(nrows):

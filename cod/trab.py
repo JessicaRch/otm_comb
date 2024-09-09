@@ -1,7 +1,8 @@
 import inst
 import cplex
 
-read = inst.Read('../instancias/1987/4/scp41.txt')
+read = inst.Read('instancias/1987/4/scp49.txt')
+
 nrows,ncolumns, cj, E = read.read_inst()
 
 # Step 3: Create a CPLEX model
