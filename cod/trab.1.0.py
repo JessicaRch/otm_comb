@@ -1,7 +1,11 @@
+## "python 'C:\Program Files\IBM\ILOG\CPLEX_Studio2211\python\setup.py' install"
+
 import inst
+import sys
+print(sys.version)
 import cplex
 
-read = inst.Read('instancias/1987/4/scp49.txt')
+read = inst.Read('ot_comb/instancias/1987/4/scp49.txt')
 
 nrows,ncolumns, cj, E = read.read_inst()
 
@@ -30,7 +34,7 @@ model.objective.set_sense(model.objective.sense.minimize)
 
 # for i in range(nrows):
 for i in range(1,nrows+1):
-    model.linear_constraints.add(
+     model.linear_constraints.add(
                                     lin_expr=[cplex.SparsePair(ind=[x[j-1] for j in E[i]], val=[1]*len(E[i]))],
                                     senses=['G'],
                                     rhs=[1],
