@@ -1,11 +1,14 @@
 ## "python 'C:\Program Files\IBM\ILOG\CPLEX_Studio2211\python\setup.py' install"
-
-import inst
-import sys
-print(sys.version)
 import cplex
+import sys
 
-read = inst.Read('instancias/1987/4/scp41.txt')
+package_directory = '/home/jessicarichards/Documents/mat_dout/ot_comb/codigos/trab_final/cod'
+sys.path.append(package_directory)
+
+from pckgs import inst
+
+read = inst.Read('trab_final/instancias/1987/A/scpa3.txt')
+
 
 nrows,ncolumns, cj, E = read.read_inst()
 
@@ -16,7 +19,7 @@ model = cplex.Cplex()
 x = [f'x{i}' for i in range(1,ncolumns+1)]
 lb = [0 for i in range(ncolumns)]
 ub = [1 for i in range(ncolumns)]
-xtypes = ['B' for _ in range(ncolumns)]
+xtypes = ['C' for _ in range(ncolumns)]
 
 A = [[f'a{i}{j}' for j in range(1,ncolumns+1)] for i in range(nrows)]
 alb = [[0 for _ in range(ncolumns)] for _ in range(nrows)]
