@@ -7,4 +7,4 @@
 
 ### Descrição do problema
 
-$S = \{s_i: i \in I\}, I=\{1...m\}$, Conjunto de $m$ items $s_i$ para cobrir
+$S = {s_i: i \in I\}, I=\{1...m\}$, Conjunto de $m$ items $s_i$ para cobrir
